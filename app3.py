@@ -96,18 +96,6 @@ def instructions_generation(client, image_description):
     )
     return response.choices[0].message.content
 
-# def display_test_cases(test_cases):
-#     for test_case in test_cases:
-#         test_case_id = test_case.get("test_case_id")
-
-#         if test_case_id:
-#             st.markdown(f"### {test_case_id}")
-#             st.subheader(test_case.get("description"))
-#             st.subheader(test_case.get("pre_conditions"))
-#             st.subheader(test_case.get("testing_steps"))
-#             st.subheaders(test_case.get("expected_result"))
-
-
 # initialize or get chat history
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
@@ -140,21 +128,6 @@ if send_button:
                 st.chat_message("ai").write(f"### Testing Instructions for {file.name}")
                 st.write(instructions)
 
-                # test_cases = []
-                # for line in instructions.split("\n"):
-                #     if line.startswith("Test case ID"):
-                #         test_case = {}
-                #         test_case["test_case_id"] = line.split("Test Case ID: ")[1].strip()
-                #     if line.startswith("Description"):
-                #         test_case["description"] = line.split("Description: ")[1].strip()
-                #     if line.startswith("Pre-conditions"):
-                #         test_case["pre_conditions"] = line.split("Pre-conditions: ")[1].strip()
-                #     if line.startswith("Testing Steps"):
-                #         test_case["testing_steps"] = line.split("Testing Steps: ")[1].strip()
-                #     if line.startswith("Expected Result"):
-                #         test_case["expected_result"] = line.split("Expected Result: ")[1].strip()
-                #         test_cases.append(test_case)
-                # display_test_cases(test_cases)
 
 st.sidebar.write("## Chat History")
 for chat in st.session_state['chat_history']:
