@@ -3,118 +3,128 @@ from groq import Groq
 import os
 import base64
 
-client = Groq(api_key = os.environ.get("GROQ_API_KEY"))
+
+client = Groq(api_key = st.secrets["GROQ_API_KEY"])
 llava_model = 'llava-v1.5-7b-4096-preview'
-llama31_model = 'llama-3.1-70b-versatile'
 
-def encode_image(image_path):
-    with open(image_path,"rb") as image_file:
-        return base64.b64encode(image_file.read()).decode('utf-8')
-    
+
+models = {
+    "gemma-7b-it": {"name": "Gemma-7b-it", "tokens": 8192, "developer": "Google"},
+    "llama2-70b-4096": {"name": "LLaMA2-70b-chat", "tokens": 4096, "developer": "Meta"},
+    "llama3-70b-8192": {"name": "LLaMA3-70b-8192", "tokens": 8192, "developer": "Meta"},
+    "llama3-8b-8192": {"name": "LLaMA3-8b-8192", "tokens": 8192, "developer": "Meta"},
+    "mixtral-8x7b-32768": {"name": "Mixtral-8x7b-Instruct-v0.1", "tokens": 32768, "developer": "Mistral"},
+}
+
+st.title("ScreenSage")
+st.write("Combines 'Screen' (for screenshots) and 'Sage' (wise guide), forming a knowledgeable assistant for testing ")
+
+
+uploaded_files = st.file_uploader("Choose images...", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
+
+col1, col2 = st.columns(2)
+with col1:
+    model_option = st.selectbox(
+        "Choose a model for generating test cases:",
+        options=list(models.keys()),
+        format_func = lambda x: models[x]["name"],
+        index=0 #deafult is set to llama 3 model
+    )
+    max_tokens_range = models[model_option]["tokens"]
+    max_tokens = st.slider(
+        "Max Tokens:",
+        min_value = 512,
+        max_value = max_tokens_range,
+        value = min(32768, max_tokens_range),
+        step = 512,
+        help = f"Adjust the maximum number of tokens (words) for the model's response. Max for selected model: {max_tokens_range}"
+    )
+
+
+with col2:
+
+    prompt2 = st.chat_message("human").text_input("Provide context (optional)", key="context")
+
+send_button = st.button("Describe Testing Instructions")
+
+def encode_image(image_bytes):
+    if image_bytes is not None:
+        encoded_string = base64.b64encode(image_bytes).decode("utf-8")
+        return "data:image/jpeg;base64,"+ encoded_string
+    else:
+        return None
 
     
+prompt = "Describe contents of this screenshot from an app User Interface."
+
 # Text to image
 def image_to_text(client, base64_image, prompt):
+    messages = [
+        {"role": "user", "content":[
+            
+            {"type": "text", "text": prompt},
+            {"type": "image_url", "image_url":{
+                "url": base64_image,
+                } 
+            }
+        ]}
+    ]
+
     response = client.chat.completions.create(
         model=llava_model,
-        messages = [
-            {"role": "user", "content":[
-                
-                {"type": "text", "text": prompt},
-                {"type": "image_url", "image_url":{
-                    "url": f"data:image/jpg;base64,{base64_image}",
-                    } 
-                }
-            ]}
-        ]
+        messages = messages
     )
 
     return response.choices[0].message.content
+
 
 def instructions_generation(client, image_description):
     response = client.chat.completions.create(
-        model = llama31_model,
+        model = model_option,
         messages = [
             {"role": "system", "content": "You are a helpful assistant that describes testing instructions for any digital product's features, based on the descriptions of single or multiple images. Each test case should include: Description- What the test case is about. Pre-conditions - What needs to be set up or ensured before testing. Testing Steps- Clear, step-by-step instructions on how to perform the test.- Expected Result: What should happen if the feature works correctly"},
             {"role": "user", "content": image_description}
-        ]
+        ],
+        max_tokens = max_tokens
     )
     return response.choices[0].message.content
 
-# Streamlit App
-st.title("AI Testing Instruction Chatbot")
-st.write("Upload an image and enter a prompt to generate testing instructions.")
-
-# Initialize or get chat history
+# initialize or get chat history
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
 
-# User input for prompt
-prompt = st.text_input("Enter your prompt for the image description:")
 
-# File uploader for images
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-
-if uploaded_file and prompt:
-    # Encode image
-    base64_image = encode_image(uploaded_file)
-
-    # Image to text description
-    image_description = image_to_text(client, base64_image, prompt)
-    st.session_state['chat_history'].append({"role": "user", "content": prompt})
-    st.session_state['chat_history'].append({"role": "assistant", "content": image_description})
-
-    # Display image description
-    st.write("### Image Description")
-    st.write(image_description)
-
-    # Generate testing instructions
-    instructions = instructions_generation(client, image_description)
-    st.session_state['chat_history'].append({"role": "assistant", "content": instructions})
-
-    # Display testing instructions
-    st.write("### Testing Instructions")
-    st.write(instructions)
-
-# Display chat history
-st.write("## Chat History")
-for chat in st.session_state['chat_history']:
-    if chat["role"] == "user":
-        st.write(f"**User**: {chat['content']}")
+if send_button:
+    if prompt2 is None:
+        prompt += ""
     else:
-        st.write(f"**Assistant**: {chat['content']}")
+        prompt += prompt2
 
+    for file in uploaded_files:
+        if file:
+            image_bytes = file.read()
+            with st.spinner("Processing Image...."):
+                base64_image = encode_image(image_bytes)
+                # image to text 
+                image_description = image_to_text(client, base64_image, prompt)
+                st.session_state['chat_history'].append({"role": "user", "content": prompt})
+                st.session_state['chat_history'].append({"role": "assistant", "content": image_description})
 
-# def clear_input_field():
-#     st.session_state.user_question = st.session_state.user_input
-#     st.session_state.user_input = ""
+                # st.write(f"### Description")
+                # st.write(image_description)
 
-# def set_send_input():
-#     st.session_state.send_input = True
-#     clear_input_field()
+                # generate testing instructions
+                instructions = instructions_generation(client, image_description)
+                st.session_state['chat_history'].append({"role": "assistant", "content": instructions})
 
-# def main():
+                # text to testing instructions
+                st.chat_message("ai").write(f"### Testing Instructions for {file.name}")
+                st.write(instructions)
 
-#     st.title("ScreenSage")
-#     st.write("Combines 'Screen' (for screenshots) and 'Sage' (wise guide), forming a knowledgeable assistant for testing ")
-
-#     chat_container = st.container()
-
-#     if "send_input" not in st.session_state:
-#         st.session_state.send_input = False
-#         st.session_state.user_question = ""
-
-#     user_input = st.text_input("Message ScreenSage", key="user_input", on_change = set_send_input)
-
-#     send_button = st.button("Send", key="send_button")
-
-#     if send_button or st.session_state.send_input:
-#         if st.session_state.user_question != "":
-#             llm_response = "This is a response"
-
-#             with chat_container:
-#                 st.chat_message("human").write(st.session_state.user_question)
-#                 st.chat_message("assistant").write("here is an answer")
-
-# if __name__ == "__main__":
-#     main()
+st.sidebar.write("## Chat History")
+for chat in st.session_state['chat_history']:
+    chat_options = []
+    if chat["role"] == "user":
+        st.sidebar.write(f"**User**: {chat['content']}")
+    else:
+        st.sidebar.write(f"**Assistant**: {chat['content']}")

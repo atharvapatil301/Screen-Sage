@@ -2,4 +2,3 @@ streamlit
 groq
 base64
 os
-langchain
