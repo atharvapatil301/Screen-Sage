@@ -1,0 +1,390 @@
+Tested using Gemma2-9B-it model with token size of 6656
+
+
+response starts here:-
+Testing Instructions for IMG-20240909-WA0002.jpg
+Test Case Descriptions for Redbus App (Pune, Women-Specific Buses)
+Test Case ID: TC_RB_001
+
+Description: Verify the display and functionality of women-specific bus booking options and the timer interface in Pune.
+
+Pre-conditions:
+
+User is logged into the Redbus app.
+User is located in Pune (GPS location confirmed).
+User has internet connectivity.
+Testing Steps:
+
+Navigate to the search screen of the Redbus app.
+Enter "bus.redbus" in the search bar and select "Pune" as the destination.
+Observe the search results. Locate the "Women Only" filter option.
+Select the "Women Only" filter.
+Observe the results. Confirm that the results display only buses designated as "Women Only."
+Select a specific bus from the results.
+Observe the booking interface. Identify the timer displaying countdown intervals (e.g., 0:01:23, 1:58:45, 0:27:58).
+Note the displayed time slots and confirm they correspond to available booking times.
+Expected Result:
+
+The "Women Only" filter option is displayed and functional, displaying only women-specific bus options.
+A timer displaying various countdown intervals is present next to the available time slots.
+The time intervals correspond to the actual time slots for booking buses within the selected criteria.
+Let me know if you need any more test cases!
+
+Testing Instructions for IMG-20240909-WA0003.jpg
+Test Cases for Travel App - NT Krishnanah Screen
+Here are some test cases based on the provided description of the travel app screenshot:
+
+Test Case ID: TC-001
+
+Description: Verify display of reservation and seat assignment details for NT Krishnanah.
+
+Pre-conditions:
+
+User is logged in to the travel app.
+User has a booking record for NT Krishnanah.
+Testing Steps:
+
+Navigate to the "My Bookings" or "Reservations" section of the app.
+Locate the booking record for NT Krishnanah.
+Tap on the booking record to view the details.
+Verify the display of reservation details such as date, time, and duration of the travel.
+Verify the assigned seat number for NT Krishnanah.
+Expected Result:
+
+All reservation details for NT Krishnanah are displayed accurately.
+The assigned seat number is clearly visible and corresponds to the booking confirmation.
+Test Case ID: TC-002
+
+Description: Verify display and format of ticket price and times for NT Krishnanah.
+
+Pre-conditions:
+
+Same as TC-001
+Testing Steps:
+
+Follow steps 1-2 from TC-001.
+
+Inspect the displayed ticket price for NT Krishnanah.
+
+Verify the format of the ticket price (e.g., currency symbol, decimal points).
+
+Locate and verify the departure and arrival times for NT Krishnanah.
+
+Ensure the times are displayed in a standard format (e.g., 24-hour clock, AM/PM).
+
+Expected Result:
+
+Ticket price for NT Krishnanah is correctly displayed in the app's preferred format.
+Departure and arrival times are accurately displayed in a standard format.
+Test Case ID: TC-003
+
+Description: Verify functionality of star rating and review submission for NT Krishnanah.
+
+Pre-conditions:
+
+Same as TC-001
+User has completed the travel related to NT Krishnanah booking.
+Testing Steps:
+
+Follow steps 1-2 from TC-001.
+
+Locate the star rating system for NT Krishnanah (e.g., 1-5 star rating).
+
+Select a star rating for NT Krishnanah (e.g., 4 stars).
+
+Tap on the "Submit Review" or a similar button.
+
+Enter a brief review (optional) for NT Krishnanah.
+
+Expected Result:
+
+User can easily select and submit a star rating for NT Krishnanah.
+Option to submit a written review is offered and available.
+The submitted review and rating are displayed on the booking record for NT Krishnanah.
+These test cases provide a starting point for comprehensive testing of the travel app's functionality related to the NT Krishnanah screen. Remember to adapt these test cases based on the specific features and functionalities of your app.
+
+Testing Instructions for IMG-20240909-WA0004.jpg
+Test Cases for Seating Chart App
+Test Case ID: TC_001
+
+Description: Verify display of seating chart sections and seat types.
+
+Pre-conditions:
+
+App is launched.
+User is logged in (optional, depending on app functionality).
+Testing Steps:
+
+Open the app.
+Navigate to the seating chart screen.
+Observe the arrangement of seating sections.
+Identify the two full sections and the partial section.
+Note the presence of markers indicating different seat types within each section.
+Expected Result:
+
+The seating chart displays two complete sections and a partial section as expected.
+Markers clearly identify different seat types within each section.
+Test Case ID: TC_002
+
+Description: Test the functionality of the "Know your seat types" button.
+
+Pre-conditions:
+
+App is launched.
+User is logged in (optional, depending on app functionality).
+Testing Steps:
+
+Open the app.
+Navigate to the seating chart screen.
+Click on the "Know your seat types" button.
+Expected Result:
+
+A detailed explanation of available seat types appears, possibly in a pop-up, modal window, or new screen.
+Explanation clarifies the features and benefits of each seat type.
+Test Case ID: TC_003
+
+Description: Verify the visual cue effectively guides user attention.
+
+Pre-conditions:
+
+App is launched.
+User is logged in (optional, depending on app functionality).
+Testing Steps:
+
+Open the app and navigate to the seating chart screen.
+Observe the bold line extending towards the viewer.
+Note the user's gaze and attention when encountering the bold line.
+Expected Result:
+
+Users naturally focus their attention on the bold line and its direction, indicating an effective visual cue.
+Testing Instructions for IMG-20240909-WA0005.jpg
+Test Case Descriptions for Transport App
+Based on the description of the screenshot, here are some test cases:
+
+Test Case ID: TC_01
+
+Description: Verify correctness of boarding point information.
+
+Pre-conditions:
+
+User is logged in to the app.
+User has selected an arrival/departure point in Mumbai.
+Testing Steps:
+
+Confirm that the line below "all boarding points in Mumbai" accurately displays the user's current location or selected arrival/departure point.
+Observe the navigation markers on the map.
+Select one of the navigation markers.
+Verify that the information displayed for the selected marker (e.g., bus stop name, expected bus arrival time) is accurate.
+Expected Result:
+
+The app accurately displays the user's location or selected arrival/departure point and provides correct information for all displayed boarding points.
+
+Test Case ID: TC_02
+
+Description: Verify route directions to a hotel.
+
+Pre-conditions:
+
+User is logged in to the app.
+User has selected a hotel from the list or by search.
+Testing Steps:
+
+Select the chosen hotel.
+Observe the displayed direction route from the user's current location to the hotel.
+Check if the route includes relevant transport options (e.g., buses, metros).
+Note the estimated travel time and distance.
+Expected Result:
+
+The app displays a clear and accurate route to the selected hotel, incorporating relevant transport options with estimated travel time and distance.
+
+Test Case ID: TC_03
+
+Description: Verify real-time bus arrival information.
+
+Pre-conditions:
+
+User is logged in to the app.
+User is located near a bus stop displayed on the map.
+Testing Steps:
+
+Select a bus stop on the map.
+Observe the real-time bus arrival information displayed for the selected bus stop.
+Note the expected arrival time for upcoming buses.
+Wait for the arrival of the bus and verify that the arrival time was accurate.
+Expected Result:
+
+The app displays accurate and up-to-date arrival times for buses at the selected bus stop.
+
+Please Note: These are just a few examples; many more test cases could be created based on the specific features and functionalities of the transport app.
+
+Testing Instructions for IMG-20240909-WA0006.jpg
+Test Cases for Train Entertainment Selection Screen
+Test Case ID: TC_ENT_001
+
+Description: Verify the display of entertainment options and their pricing.
+
+Pre-conditions: Train app is open and logged in.
+
+Testing Steps:
+
+Navigate to the entertainment selection screen.
+Verify the presence of four entertainment options.
+Verify the pricing information displayed for each option (55 cents, 60 cents, and 70 cents).
+Confirm that the prices are clearly visible and associated with the correct options.
+Observe the layout of the options on the screen, ensuring they are spread evenly and organized.
+Expected Result: All four entertainment options are displayed on the screen, clearly labelled with their respective prices (55 cents, 60 cents, and 70 cents). The layout is neat, organized, and easily navigable.
+
+Test Case ID: TC_ENT_002
+
+Description: Verify the page order and placement of options.
+
+Pre-conditions: Train app is open and logged in.
+
+Testing Steps:
+
+Navigate to the entertainment selection screen.
+Carefully observe the order of the options, noting their position relative to each other.
+Pay attention to the placement of options with different pricing.
+Specifically, verify the placement of the 60 cent options, noting if one is displayed above the other as seen in the screenshot.
+Expected Result: The entertainment options are displayed in a logical order, with pricing reflected in their placement. One 60 cent option appears above the other 60 cent option, as depicted in the screenshot.
+
+These are just two examples based on the provided screenshot. Other test cases could be created to evaluate specific features like selecting options, purchasing entertainment, or handling network connectivity issues.
+
+Testing Instructions for IMG-20240909-WA0007.jpg
+Test Case Descriptions
+Here are some test cases based on the provided screenshot description:
+
+Test Case ID: TC_001
+
+Description: Verify the functionality of the menu button and the navigation between screens.
+
+Pre-conditions:
+
+App is launched and the initial screen is displayed.
+User is logged in (if applicable).
+Testing Steps:
+
+Tap on the menu button.
+Verify that the menu drawer slides in from the side.
+Tap on a menu option (e.g., "Live Tracking").
+Verify that the app navigates to the corresponding screen.
+Tap on the back button or the menu button again to return to the initial screen.
+Expected Result:
+
+The menu drawer should slide in and out smoothly.
+Navigating to different menu options should transition seamlessly.
+Returning to the initial screen should be possible without issues.
+Test Case ID: TC_002
+
+Description: Verify the functionality of the "Live Tracking" button and the accuracy of displayed bus routes.
+
+Pre-conditions:
+
+App is launched and the initial screen is displayed.
+User is logged in (if applicable).
+GPS services are enabled on the device.
+Testing Steps:
+
+Tap on the "Live Tracking" button.
+Verify that the app displays the bus route information, including real-time location data.
+Observe the movement of the bus marker on the map and compare it to the expected route.
+Wait for a period of time (e.g., 5 minutes) and repeat step 2.
+Expected Result:
+
+The "Live Tracking" feature should load and display accurate bus route information.
+The bus marker should move dynamically on the map, reflecting its real-time location.
+The displayed route should match the expected bus path.
+Test Case ID: TC_003
+
+Description: Verify the functionality of "Other Features" section and the presence of relevant features.
+
+Pre-conditions:
+
+App is launched and the initial screen is displayed.
+User is logged in (if applicable).
+Testing Steps:
+
+Tap on the "Other Features" button or section.
+Verify that the app displays a list or grid of available features.
+Select any prominent feature (e.g., "Bus Stop Schedule").
+Verify that the selected feature loads and displays relevant information.
+Expected Result:
+
+The "Other Features" section should load correctly and display a selection of relevant features.
+Selecting a feature should lead to a dedicated screen displaying detailed information related to that feature.
+Let me know if you'd like more test cases or have any specific scenarios you want to explore!
+
+Testing Instructions for IMG-20240909-WA0008.jpg
+Test Cases for Bus Transit App
+Based on the provided screenshot, here are some test cases:
+
+Test Case ID: TC-001
+
+Description: Verify that the "Main" option displays relevant bus-related information.
+
+Pre-conditions:
+
+App is installed and launched.
+User is logged in (if required).
+Testing Steps:
+
+Tap on the "Main" option.
+Observe the displayed information. This could include real-time bus locations, schedules, delays, news updates, etc.
+Expected Result:
+
+The "Main" section displays relevant and updated bus information.
+Test Case ID: TC-002
+
+Description: Verify that the "Bus Service" and "V7 Bus Line" options lead to the appropriate information.
+
+Pre-conditions:
+
+App is installed and launched.
+User is logged in (if required).
+Testing Steps:
+
+Tap on the "Bus Service" option.
+Verify that the user is redirected to a screen listing all available bus services within the app's coverage area.
+Tap on the "V7 Bus Line" option.
+Verify that the user is redirected to a screen specific to the V7 bus line, displaying its schedule, route map, and possibly additional information.
+Expected Result:
+
+Tapping on "Bus Service" displays a comprehensive list of available bus services.
+Tapping on "V7 Bus Line" displays detailed information about the V7 bus line.
+Test Case ID: TC-003
+
+Description: Verify that the ticket selection process allows users to choose boarding and payment methods.
+
+Pre-conditions:
+
+App is installed and launched.
+User is logged in (if required).
+Testing Steps:
+
+Tap on the "Ticket Selection" option.
+Verify that the user can choose the boarding date and time.
+Ensure that the app offers various payment methods for selection.
+Attempt to select different boarding locations, if applicable.
+Expected Result:
+
+The ticket selection process allows for flexible date and time selection, as well as various payment methods.
+The app displays appropriate options based on the selected boarding location.
+Test Case ID: TC-004
+
+Description: Verify that the reservation process securely books a seat or coordinates with parcel service.
+
+Pre-conditions:
+
+App is installed and launched.
+User is logged in (if required) and has successfully selected a ticket.
+Testing Steps:
+
+Tap on the "Reserve Boarding" button (or similar).
+Observe the confirmation screen displaying the reservation details:
+Boarding Time
+Bus number
+Date of boarding
+Any relevant parcel service information
+Expected Result:
+
+The reservation process confirms the booking with clear details and prepares the necessary information for the chosen service (seat reservation or parcel coordination).

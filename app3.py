@@ -2,22 +2,22 @@ import streamlit as st
 from groq import Groq
 import os
 import base64
-
+import re
 
 client = Groq(api_key = st.secrets["GROQ_API_KEY"])
 llava_model = 'llava-v1.5-7b-4096-preview'
 
 
 models = {
+    "gemma2-9b-it": {"name": "Gemma2-9b-it", "tokens": 8192, "developer": "Google"},
     "gemma-7b-it": {"name": "Gemma-7b-it", "tokens": 8192, "developer": "Google"},
-    "llama2-70b-4096": {"name": "LLaMA2-70b-chat", "tokens": 4096, "developer": "Meta"},
     "llama3-70b-8192": {"name": "LLaMA3-70b-8192", "tokens": 8192, "developer": "Meta"},
     "llama3-8b-8192": {"name": "LLaMA3-8b-8192", "tokens": 8192, "developer": "Meta"},
     "mixtral-8x7b-32768": {"name": "Mixtral-8x7b-Instruct-v0.1", "tokens": 32768, "developer": "Mistral"},
 }
 
 st.title("ScreenSage")
-st.write("Combines 'Screen' (for screenshots) and 'Sage' (wise guide), forming a knowledgeable assistant for testing ")
+st.subheader("Combines 'Screen' (for screenshots) and 'Sage' (wise guide), forming a knowledgeable assistant for testing ")
 
 
 uploaded_files = st.file_uploader("Choose images...", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
@@ -57,7 +57,7 @@ def encode_image(image_bytes):
     
 prompt = "Describe contents of this screenshot from an app User Interface."
 
-# Text to image
+# text to image
 def image_to_text(client, base64_image, prompt):
     messages = [
         {"role": "user", "content":[
@@ -77,17 +77,36 @@ def image_to_text(client, base64_image, prompt):
 
     return response.choices[0].message.content
 
-
+prompt_to_model = '''You are a helpful assistant that describes test cases for any app features, based on the descriptions of the screenshots of the app. 
+Each test case should include:
+    Test Case ID -  Assign a unique identifier to the test case.
+    Description - Describe the test case, outlining what it is designed to do.
+    Pre-conditions - Document any pre-conditions that need to be in place for the test case to run properly. It may include initial configuration settings or manually executing some previous tests.
+    Testing Steps - Document the detailed steps necessary to execute the test case. This includes deciding which actions should be taken to perform the test.
+    Expected Result -  Provide the expected result of the test. This is the result the tester is looking to verify.
+'''
 def instructions_generation(client, image_description):
     response = client.chat.completions.create(
         model = model_option,
         messages = [
-            {"role": "system", "content": "You are a helpful assistant that describes testing instructions for any digital product's features, based on the descriptions of single or multiple images. Each test case should include: Description- What the test case is about. Pre-conditions - What needs to be set up or ensured before testing. Testing Steps- Clear, step-by-step instructions on how to perform the test.- Expected Result: What should happen if the feature works correctly"},
+            {"role": "system", "content": prompt_to_model},
             {"role": "user", "content": image_description}
         ],
         max_tokens = max_tokens
     )
     return response.choices[0].message.content
+
+# def display_test_cases(test_cases):
+#     for test_case in test_cases:
+#         test_case_id = test_case.get("test_case_id")
+
+#         if test_case_id:
+#             st.markdown(f"### {test_case_id}")
+#             st.subheader(test_case.get("description"))
+#             st.subheader(test_case.get("pre_conditions"))
+#             st.subheader(test_case.get("testing_steps"))
+#             st.subheaders(test_case.get("expected_result"))
+
 
 # initialize or get chat history
 if 'chat_history' not in st.session_state:
@@ -120,6 +139,22 @@ if send_button:
                 # text to testing instructions
                 st.chat_message("ai").write(f"### Testing Instructions for {file.name}")
                 st.write(instructions)
+
+                # test_cases = []
+                # for line in instructions.split("\n"):
+                #     if line.startswith("Test case ID"):
+                #         test_case = {}
+                #         test_case["test_case_id"] = line.split("Test Case ID: ")[1].strip()
+                #     if line.startswith("Description"):
+                #         test_case["description"] = line.split("Description: ")[1].strip()
+                #     if line.startswith("Pre-conditions"):
+                #         test_case["pre_conditions"] = line.split("Pre-conditions: ")[1].strip()
+                #     if line.startswith("Testing Steps"):
+                #         test_case["testing_steps"] = line.split("Testing Steps: ")[1].strip()
+                #     if line.startswith("Expected Result"):
+                #         test_case["expected_result"] = line.split("Expected Result: ")[1].strip()
+                #         test_cases.append(test_case)
+                # display_test_cases(test_cases)
 
 st.sidebar.write("## Chat History")
 for chat in st.session_state['chat_history']:
