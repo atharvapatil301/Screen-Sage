@@ -1,18 +1,29 @@
 from groq import Groq
 import base64
 import os
+# from langchain.memory import ConversationBufferWindowMemeory
+# from langchain.prompts import PromptTemplate
+# from prompt_templates import memory_prompt_template
+
 
 client = Groq(api_key = os.environ.get("GROQ_API_KEY"))
 llava_model = 'llava-v1.5-7b-4096-preview'
 llama31_model = 'llama-3.1-70b-versatile'
 
+# def create_chat_memory(chat_history):
+#     return ConversationBufferWindowMemeory(memory_key = "history", chat_memory = chat_history, k=3)
+
+# def create_prompt_from_template(template):
+#     return PromptTemplate.from_template(template)
+
+
 #encode the image
-image_path = "353db0e2-6aed-4995-8d98-2ed9cc76012e.JPG"
+# image_path = "353db0e2-6aed-4995-8d98-2ed9cc76012e.JPG"
 def encode_image(image_path):
     with open(image_path,"rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
     
-base64_image = encode_image(image_path)
+# base64_image = encode_image(image_path)
     
 # Text to image
 def image_to_text(client, base64_image, prompt):
@@ -50,12 +61,19 @@ def instructions_generation(client, image_description):
 
 
 # the whole pipeline
-prompt = "Describe contents of this screenshot from an app"
+# prompt = "Describe contents of this screenshot from an app"
 
-image_description = image_to_text(client, base64_image, prompt)
+# image_description = image_to_text(client, base64_image, prompt)
 
-print("\n---Image Description----")
-print(image_description)
+# print("\n---Image Description----")
+# print(image_description)
 
-print("\n--- Instructions---")
-print(instructions_generation(client, image_description))
+# print("\n--- Instructions---")
+# print(instructions_generation(client, image_description))
+
+
+# class chatChain:
+#     def __init__(self, chat_history, client, base64_image, prompt):
+#         self.memory = create_chat_memory(chat_history)
+#         self.to_text = image_to_text(client, base64_image, prompt)
+#         chat_prompt = create_prompt_from_template(memory_prompt_template)
