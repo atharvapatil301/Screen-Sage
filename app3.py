@@ -96,7 +96,7 @@ def instructions_generation(client, image_description):
     )
     return response.choices[0].message.content
 
-# initialize or get chat history
+# initialize history
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
 
@@ -105,6 +105,7 @@ if send_button:
     if prompt2 is None:
         prompt += ""
     else:
+        #context appended to exisiting prompt
         prompt += prompt2
 
     for file in uploaded_files:
