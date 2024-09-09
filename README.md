@@ -85,8 +85,14 @@ The third prompt (prompt3) is nothing but the context that you provide and that 
 
 ![Screenshot 2024-09-09 090747](https://github.com/user-attachments/assets/0d8515e5-93cf-49a7-b0e4-b6c1aa1ab4a8)
 
+Home Screen
 ![Screenshot 2024-09-09 090720](https://github.com/user-attachments/assets/faa9f1fb-b79a-4044-b613-b8978c4d7844)
 
+Selectimg Image Files
+![Screenshot 2024-09-09 090747](https://github.com/user-attachments/assets/0d8515e5-93cf-49a7-b0e4-b6c1aa1ab4a8)
+
+Optionally Provide Context
+![Screenshot 2024-09-09 090747](https://github.com/user-attachments/assets/0d8515e5-93cf-49a7-b0e4-b6c1aa1ab4a8)
 ## RunLocally
 
 Clone the project
