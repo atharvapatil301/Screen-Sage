@@ -75,10 +75,12 @@ The third prompt (prompt3) is nothing but the context that you provide and that 
 
 ## Screenshots
 + Home Screen
+  
 ![Screenshot 2024-09-09 090720](https://github.com/user-attachments/assets/faa9f1fb-b79a-4044-b613-b8978c4d7844)
 
 
-+ Selectimg Image Files
++ Selecting Image Files
+  
 ![Screenshot 2024-09-09 090747](https://github.com/user-attachments/assets/0d8515e5-93cf-49a7-b0e4-b6c1aa1ab4a8)
 
 
@@ -91,23 +93,26 @@ The third prompt (prompt3) is nothing but the context that you provide and that 
 
 
 + Adjust Token Size
+  
 ![Screenshot 2024-09-09 090948](https://github.com/user-attachments/assets/49d236ae-7129-41c5-bc7e-c1a0873a6547)
 
 
 + Describe Testing Intstructions
+  
 ![Screenshot 2024-09-09 091106](https://github.com/user-attachments/assets/593e2c04-8e86-40eb-95cc-6dcce5e63db7)
+
 ## RunLocally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/Progpr/myracle
+  git clone https://github.com/Progpr/myracle-case-study
 ```
 
 Go to the project directory
 
 ```bash
-  cd ignite5
+  cd myracle-case-study
 ```
 
 Install dependencies
@@ -116,9 +121,9 @@ Install dependencies
   pip install -r requirements.txt
 ```
 
-Start the server
+Run the Streamlit App
 
 ```bash
-  flask run
+  streamlit run app3.py
 ```
 
