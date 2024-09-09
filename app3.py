@@ -124,9 +124,15 @@ if send_button:
                 instructions = instructions_generation(client, image_description)
                 st.session_state['chat_history'].append({"role": "assistant", "content": instructions})
 
-                # text to testing instructions
-                st.chat_message("ai").write(f"### Testing Instructions for {file.name}")
-                st.write(instructions)
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    # display screenshot
+                    st.image(file, caption = file.name, width = 300)
+
+                with col2:
+                    st.chat_message("ai").write(f"### Testing Instructions for {file.name}")
+                    st.write(instructions)
 
 
 st.sidebar.write("## Chat History")
