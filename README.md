@@ -51,13 +51,14 @@ The Image + Text is fed into the LlaVA Model which generates the image descripti
 
 There are three prompts given to the multimodal. Two of the prompts are static (fixed prompts everytime the model is run) and one prompt added in realtime.
 
-The prompt given to the LlaVA Vision Model is (prompt1): {italics if possible}
-"Describe contents of this screenshot from an app User Interface."
-This is so that the vision model has a superficial understanding of the contents of the images.
+The prompt given to the LlaVA Vision Model is (prompt1):
+```bash
+  "Describe contents of this screenshot from an app User Interface."
+```
 
-The second prompt is given to the Large Language Model for test case generation and that is (prompt2):
-{italics if possible}
-You are a helpful assistant that describes test cases for any app features, based on the descriptions of the screenshots of the app. 
+This is so that the vision model has a superficial understanding of the contents of the images. The second prompt is given to the Large Language Model for test case generation and that is (prompt2):
+```bash
+"You are a helpful assistant that describes test cases for any app features, based on the descriptions of the screenshots of the app. 
 
 Each test case should include:
 
@@ -65,14 +66,16 @@ Each test case should include:
 + Description - Describe the test case, outlining what it is designed to do.
 + Pre-conditions - Document any pre-conditions that need to be in place for the test case to run properly. It may include initial configuration settings or manually executing some previous tests.
 + Testing Steps - Document the detailed steps necessary to execute the test case. This includes deciding which actions should be taken to perform the test.
-+ Expected Result -  Provide the expected result of the test. This is the result the tester is looking to verify.
++ Expected Result -  Provide the expected result of the test. This is the result the tester is looking to verify."
+  
+```
 
 The third prompt (prompt3) is nothing but the context that you provide and that is also given to the LlaVa model. Prompt3 is just appended to prompt1 in real time as and when you run the solution
 
 ## Screenshots
 
 
-##RunLocally
+## RunLocally
 
 Clone the project
 
