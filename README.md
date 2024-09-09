@@ -74,7 +74,6 @@ Each test case should include:
 The third prompt (prompt3) is nothing but the context that you provide and that is also given to the LlaVa model. Prompt3 is just appended to prompt1 in real time as and when you run the solution
 
 ## Screenshots
-![Screenshot 2024-09-08 184011](https://github.com/user-attachments/assets/cb233b07-90fb-4901-b78f-7565c8e8a237)
 
 ![Screenshot 2024-09-09 091106](https://github.com/user-attachments/assets/593e2c04-8e86-40eb-95cc-6dcce5e63db7)
 
