@@ -4,7 +4,12 @@ import os
 import base64
 import re
 
-client = Groq(api_key = st.secrets["GROQ_API_KEY"])
+if "GROQ_API_KEY" in st.secrets:
+    api_key = st.secrets["GROQ_API_KEY"]
+else:
+    st.error("key missing")
+
+client = Groq(api_key = api_key)
 llava_model = 'llava-v1.5-7b-4096-preview'
 
 
