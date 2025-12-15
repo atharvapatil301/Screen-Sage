@@ -128,4 +128,6 @@ Run the Streamlit App
 ```bash
   streamlit run app3.py
 ```
-
+## Future Scope
+ + Fine-tuning the Llava vision model on application UI screenshots
+ + Fine-tuning the textbased models on test descriptions using frameworks like Junit (for unit testing)
