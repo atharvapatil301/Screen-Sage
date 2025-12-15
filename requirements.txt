@@ -27,7 +27,6 @@ idna==3.10
 Jinja2==3.1.6
 jsonschema==4.25.1
 jsonschema-specifications==2025.9.1
-macholib @ file:///AppleInternal/Library/BuildRoots/39d9dc1a-2111-11f0-be06-226177e5bb69/Library/Caches/com.apple.xbs/Sources/python3/macholib-1.15.2-py2.py3-none-any.whl
 MarkupSafe==3.0.3
 narwhals==2.13.0
 numpy==2.0.2
