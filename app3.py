@@ -1,24 +1,21 @@
 import streamlit as st
 from groq import Groq
-
+from dotenv import load_dotenv
+import os
 import base64
+load_dotenv()
 
-
-if "GROQ_API_KEY" in st.secrets:
-    api_key = st.secrets["GROQ_API_KEY"]
-else:
-    st.error("key missing")
+api_key = os.getenv("GROQ_API_KEY")
 
 client = Groq(api_key = api_key)
-llava_model = 'llava-v1.5-7b-4096-preview'
+llava_model = 'meta-llama/llama-4-scout-17b-16e-instruct'
 
 
 models = {
-    "gemma2-9b-it": {"name": "Gemma2-9b-it", "tokens": 8192, "developer": "Google"},
-    "gemma-7b-it": {"name": "Gemma-7b-it", "tokens": 8192, "developer": "Google"},
-    "llama3-70b-8192": {"name": "LLaMA3-70b-8192", "tokens": 8192, "developer": "Meta"},
-    "llama3-8b-8192": {"name": "LLaMA3-8b-8192", "tokens": 8192, "developer": "Meta"},
-    "mixtral-8x7b-32768": {"name": "Mixtral-8x7b-Instruct-v0.1", "tokens": 32768, "developer": "Mistral"},
+    "moonshotai/kimi-k2-instruct-0905": {"name": "moonshotai/kimi-k2-instruct-0905", "tokens": 4096},
+    "llama-3.1-8b-instant": {"name": "llama-3.1-8b-instant", "tokens": 1024},
+    "llama-3.3-70b-versatile": {"name": "llama-3.3-70b-versatile", "tokens": 1024},
+    "openai/gpt-oss-120b": {"name": "openai/gpt-oss-120b", "tokens": 8192},
 }
 
 st.title("ScreenSage")
@@ -137,6 +134,7 @@ if send_button:
                     st.image(file, caption = file.name, width = 300)
 
                 with col2:
+                    # display testcases
                     st.chat_message("ai").write(f"### Testing Instructions for {file.name}")
                     st.write(instructions)
 
