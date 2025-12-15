@@ -1,8 +1,8 @@
 import streamlit as st
 from groq import Groq
-import os
+
 import base64
-import re
+
 
 if "GROQ_API_KEY" in st.secrets:
     api_key = st.secrets["GROQ_API_KEY"]
@@ -110,7 +110,7 @@ if send_button:
     if prompt2 is None:
         prompt += ""
     else:
-        #context appended to exisiting prompt
+        #context appended to existing prompt
         prompt += prompt2
 
     for file in uploaded_files:
@@ -118,13 +118,13 @@ if send_button:
             image_bytes = file.read()
             with st.spinner("Processing Image...."):
                 base64_image = encode_image(image_bytes)
+
                 # image to text 
                 image_description = image_to_text(client, base64_image, prompt)
                 st.session_state['chat_history'].append({"role": "user", "content": prompt})
                 st.session_state['chat_history'].append({"role": "assistant", "content": image_description})
 
-                # st.write(f"### Description")
-                # st.write(image_description)
+
 
                 # generate testing instructions
                 instructions = instructions_generation(client, image_description)

@@ -2,7 +2,7 @@
 # ScreenSage - A testing assistant
 
 
-ScreenSage is an AI test cases generator. Simply by uploading screenshots of your new app or software, it will generate a series of elaborate test cases for each functionality. It saves you the effort of manually describing test cases and prevents the risk of leaving any application component untested. Link to demo video (https://youtu.be/4AButkbHXUg)
+ScreenSage is an AI testcases generator. Simply by uploading screenshots of your new app or software, it will generate a series of elaborate test cases for each functionality. It saves you the effort of manually describing test cases and prevents the risk of leaving any application component untested. Link to demo video (https://youtu.be/4AButkbHXUg)
 
 ![Screenshot 2024-09-09 090720](https://github.com/user-attachments/assets/39a5a17f-f3ab-48fd-9522-108f462f57fe)
 
@@ -16,7 +16,7 @@ ScreenSage is an AI test cases generator. Simply by uploading screenshots of you
 + [Run Locally](##RunLocally)
 ## Architecture
 
-In the development of ScreenSage, chosing the right kind of Multimodal architecture was of extreme importance, including selecting the appropiate Language Models.
+In the development of ScreenSage, choosing the right kind of Multimodal architecture was of extreme importance, including selecting the appropiate Language Models.
 ScreenSage consists of two LLMs: [LLaVA 1.5 7B Vision Language Model](https://huggingface.co/liuhaotian/llava-v1.5-7b) and any of these Large Language Models:
 
 [Gemma2-9b-it](https://huggingface.co/google/gemma-2-9b-it),
@@ -108,13 +108,13 @@ The third prompt (prompt3) is nothing but the context that you provide and that 
 Clone the project
 
 ```bash
-  git clone https://github.com/Progpr/myracle-case-study
+  git clone https://github.com/atharvapatil301/Screen-Sage.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd myracle-case-study
+  cd Screen-Sage
 ```
 
 Install dependencies
