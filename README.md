@@ -1,12 +1,11 @@
-
 ---
 title: Screen Sage
 emoji: 🎬
 colorFrom: blue
 colorTo: purple
 sdk: streamlit
-sdk_version: "1.32.0"
-app_file: app.py
+sdk_version: 1.52.1
+app_file: app3.py
 pinned: false
 ---
 
