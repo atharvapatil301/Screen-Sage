@@ -12,6 +12,7 @@ pinned: false
 
 # ScreenSage - A testing assistant
 
+A small personal weekend project
 
 ScreenSage is an AI testcases generator. Simply by uploading screenshots of your new app or software, it will generate a series of elaborate test cases for each functionality. It saves you the effort of manually describing test cases and prevents the risk of leaving any application component untested. Link to demo video (https://youtu.be/4AButkbHXUg)
 
