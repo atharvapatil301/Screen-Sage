@@ -36,6 +36,9 @@ ScreenSage consists of two LLMs: [LLaVA 1.5 7B Vision Language Model](https://hu
 [LLaMA3-8b-8192](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md),
 [Mixtral-8x7b-Instruct-v0.1](https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1)
 
+
+***These models are prone to be decomissioned and replaced by newer models. You can see the newer models in the application itself***
+
 This is how the architecture or the flow of ScreenSage looks like:
 
 
