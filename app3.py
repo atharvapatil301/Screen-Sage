@@ -12,7 +12,6 @@ llava_model = 'meta-llama/llama-4-scout-17b-16e-instruct'
 
 
 models = {
-    "moonshotai/kimi-k2-instruct-0905": {"name": "moonshotai/kimi-k2-instruct-0905", "tokens": 4096},
     "llama-3.1-8b-instant": {"name": "llama-3.1-8b-instant", "tokens": 1024},
     "llama-3.3-70b-versatile": {"name": "llama-3.3-70b-versatile", "tokens": 1024},
     "openai/gpt-oss-120b": {"name": "openai/gpt-oss-120b", "tokens": 8192},
